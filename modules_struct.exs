@@ -15,3 +15,22 @@ person = %{
 # ~D in this person represents a Sigil. Any Alphabet literal followed by a '~' symbol is called a Sigil.
 
 #In this example, it represent a data that is turned into a Date Format.
+
+#Let's do some operations
+
+#represent full name of the person
+full_name = fn (person) -> "#{person.first_name} #{person.last_name}" end
+
+full_name.(person)
+
+#Find age of a person
+age = fn (person) ->
+  days =  Date.diff(Date.utc_today, person.birthday)
+  days / 365.25
+end
+
+age.(person)
+
+# Now let's create our own Module named Person and store this module in person.exs file
+
+#To compile Code, we just use : c "person.exs", "."
