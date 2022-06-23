@@ -14,7 +14,7 @@ _cities = ["vienna", "melbourne", "osaka", "calgary", "sydney"]
 #Question 1:
 # Use a combination of Enum.map/2 and String.replace/3 to replace all the e's in these words with another letter of your choosing: ["a", "very", "fine", "collection", "of", "words", "enunciated"]
 q1 = ["a", "very", "fine", "collection", "of", "words", "enunciated"]
-Enum.map(q1, fn(q) ->  IO.puts(String.replace(q,"e","O")) end)
+# Enum.map(q1, fn(q) ->  IO.puts(String.replace(q,"e","O")) end)
 
 #Also can be written as:
 Enum.map(q1, &String.replace(&1,"e","O"))
