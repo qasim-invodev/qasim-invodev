@@ -11,10 +11,44 @@ defmodule People.Person do
             location: "home"
 
   # All these are Public Functions
-  def full_name(%__MODULE__{} = person) do
-    "#{person.first_name} #{person.last_name}"
+
+  @doc """
+  Joins together a person's first name and last name.
+  If that person only has a first name, then will only show that name.
+
+  ## Examples
+
+  iex> ryan = %Person{first_name: "Ryan", last_name: "Bigg"}
+  iex> ryan |> Person.full_name
+  "Ryan Bigg"
+
+  iex> madonna = %Person{first_name: "Madonna"}
+  iex> madonna |> Person.full_name
+  "Madonna"
+  """
+  def full_name(%__MODULE__{
+    first_name: first_name,
+    last_name: nil
+  }) do
+    "#{first_name}"
   end
 
+  def full_name(%__MODULE__{
+    first_name: first_name,
+    last_name: last_name
+  }) do
+    "#{first_name} #{last_name}"
+  end
+
+  @doc """
+  Calculate a person's age if birthday is available
+
+  ## Examples
+
+  iex> madonna = %Person{birthday: ~D[1996-03-28]}
+  iex> madonna |> Person.age
+  26.239561943874058
+  """
   def age(%__MODULE__{} = person) do
     days = Date.diff(Date.utc_today(), person.birthday)
     days / 365.25
