@@ -24,14 +24,11 @@ defmodule Occurrence do
   def count_occ(sentence) do
     sentence = String.split(String.downcase(sentence)," ", trim: true)
     count_words = fn({k, v}, acc) ->
-      Map.put(acc, k, Enum.count(v))
+      Map.put(acc, String.to_atom(k), Enum.count(v))
     end
-    new = Enum.group_by(sentence,fn(word) -> word end) |> Enum.reduce(%{}, count_words)
-    new
+    Enum.group_by(sentence,fn(word) -> word end) |> Enum.reduce(%{}, count_words)
   end
 end
 
-
-
 res = Occurrence.count_occ("Olly Olly in the house")
-IO.puts res
+IO.inspect(res)
