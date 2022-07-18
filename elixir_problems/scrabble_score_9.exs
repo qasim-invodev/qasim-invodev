@@ -42,6 +42,7 @@ defmodule Scrabble do
         alphabet in ["K"] -> score + 5
         alphabet in ["J", "X"] -> score + 8
         alphabet in ["Q", "Z"] -> score + 10
+        true -> score + 0
       end
     end)
   end
